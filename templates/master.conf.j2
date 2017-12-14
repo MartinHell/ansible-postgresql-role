@@ -253,6 +253,23 @@ vacuum_defer_cleanup_age = {{ pg_cfg_srv_vacuum_defer_cleanup_age }}         # n
 wal_receiver_timeout = {{ pg_cfg_srv_replication_receiver_timeout }}
 {% endif -%}
 
+{% if pg_version | version_compare('9.4', '>=') -%}
+# Replication slots were introduced with PostgreSQL 9.4 and
+# are designed to ensure that any standby connected to the master
+# using a replication slot will always be able to retrieve
+# the required WAL files.
+#
+# This removes the need to manually manage WAL file retention by estimating
+# the number of WAL files that need to be maintained on the master
+# using wal_keep_segments.
+#
+# NOTE: Enable only in version 9.4 and above. Do however be aware that
+# if a standby is disconnected, WAL will continue to accumulate on
+# the master until either the standby reconnects or the replication slot
+# is dropped.
+max_replication_slots = {{ pg_cfg_srv_replication_slots }}
+{% endif -%}
+
 #------------------------------------------------------------------------------
 # QUERY TUNING
 #------------------------------------------------------------------------------
