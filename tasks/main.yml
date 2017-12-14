@@ -7,7 +7,7 @@
   tags: postgres_common
 
 - name: Include Debian tasks
-  include: debian.yml
+  import_tasks: debian.yml
   when: ansible_os_family == "Debian"
   tags: postgres_debian
 
@@ -28,7 +28,7 @@
   tags: postgres_packages
 
 - name: Recreate cluster
-  include: recreate_cluster.yml
+  import_tasks: recreate_cluster.yml
   when: pg_cluster_recreate
   tags: postgres_cluster
 
@@ -64,7 +64,7 @@
   when: pg_cfg_srv_ssl_key_file is defined
   tags: postgres_config
 
-- include: extensions_common.yml
+- import_tasks: extensions_common.yml
   tags: postgres_extensions
 
 - meta: flush_handlers
@@ -79,6 +79,6 @@
   become: true
   tags: postgres_start
 
-- include: postgis.yml
+- import_tasks: postgis.yml
   when: pg_postgis
   tags: postgres_postgis
