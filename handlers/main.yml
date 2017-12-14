@@ -2,7 +2,14 @@
 # handlers file for postgresql
 - name: restart postgresql
   service:
+    systemd: postgresql
+    state: restarted
+    arguments: "{{ pg_version }}"
+  become: true
+
+- name: reload postgresql
+  systemd:
     name: postgresql
     state: restarted
     arguments: "{{ pg_version }}"
-  sudo: true
+  become: true
