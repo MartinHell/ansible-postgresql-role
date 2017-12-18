@@ -182,7 +182,7 @@ effective_io_concurrency = {{ pg_cfg_srv_effective_io_concurrency }}           #
 
 # - Settings -
 
-wal_level = {{ pg_cfg_srv_wal_level }}                    # minimalmal, archive, or hot_standby
+wal_level = '{{ pg_cfg_srv_wal_level }}'                    # minimalmal, archive, or hot_standby
 fsync = {{ pg_cfg_srv_fsync }}                    # turns forced synchronization on or off
 synchronous_commit = {{ pg_cfg_srv_synchronous_commit }}                # synchronization level;
                                         # off, local, remote_write, or on
@@ -269,6 +269,11 @@ wal_receiver_timeout = {{ pg_cfg_srv_replication_receiver_timeout }}
 # is dropped.
 max_replication_slots = {{ pg_cfg_srv_replication_slots }}
 {% endif -%}
+
+# Enable read-only queries on a standby
+# (Note: this will be ignored on a master but we recommend including
+# it anyway)
+hot_standby = {{ pg_cfg_srv_hot_standby }}
 
 #------------------------------------------------------------------------------
 # QUERY TUNING
