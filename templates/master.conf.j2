@@ -612,4 +612,9 @@ restart_after_crash = {{ pg_cfg_srv_restart_after_crash }}             # reiniti
 # CUSTOMIZED OPTIONS
 #------------------------------------------------------------------------------
 
+{% if pg_cfg_srv_stat_statements -%}
+pg_stat_statements.max = {{ pg_cfg_srv_stat_statements_max }}
+pg_stat_statements.track = {{ pg_cfg_stat_statements_track }}
+{% endif -%}
+
 # Add settings for extensions here

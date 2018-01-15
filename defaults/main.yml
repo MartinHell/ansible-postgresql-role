@@ -528,3 +528,7 @@ pg_cfg_srv_restart_after_crash: 'on'             # reinitialize after backend cr
 pg_proxy_env:
   LC_ALL: "{{ pg_locale }}"
   LC_LCTYPE: "{{ pg_locale }}"
+
+pg_cfg_srv_stat_statements: false
+pg_cfg_stat_statements_max: '1000'
+pg_cfg_stat_statements_track: 'all'
