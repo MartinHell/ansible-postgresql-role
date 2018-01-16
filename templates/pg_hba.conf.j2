@@ -22,9 +22,9 @@ host  all  all  {{ host }}  password
 {% endfor %}
 
 # Trusted hosts
-{% for host in pg_cfg_pg_hba_trust_hosts %}
+{% for connection in pg_cfg_pg_hba_trust_hosts %}
 # {{ connection.comment }}
-host  all  all  {{ host }}  trust
+host  {{ connection.database }}  {{ connection.user }}  {{ connection.address }}  trust
 {% endfor %}
 
 # User custom
