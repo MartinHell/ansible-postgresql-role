@@ -154,6 +154,7 @@ pg_cfg_srv_commit_siblings: '5'                    # range 1-1000
 
 # - Checkpoints -
 
+pg_cfg_srv_max_wal_size: '16MB'
 pg_cfg_srv_checkpoint_segments: '3'                # in logfile segments, min 1, 16MB each
 pg_cfg_srv_checkpoint_timeout: '5min'              # range 30s-1h
 pg_cfg_srv_checkpoint_completion_target: '0.5'     # checkpoint target duration, 0.0 - 1.0
