@@ -202,7 +202,7 @@ commit_delay = {{ pg_cfg_srv_commit_delay }}                       # range 0-100
 commit_siblings = {{ pg_cfg_srv_commit_siblings }}                    # range 1-1000
 
 {% if pg_version | version_compare('9.5', '>=') -%}
-wal_log_hints = {{ pg_cfg_srv_wal_log_hints | default ('false') }}
+wal_log_hints = {{ pg_cfg_srv_wal_log_hints | default ('off') }}
 {% endif -%}
 
 # - Checkpoints -
