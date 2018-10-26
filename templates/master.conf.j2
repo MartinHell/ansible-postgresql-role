@@ -201,6 +201,10 @@ wal_writer_delay = {{ pg_cfg_srv_wal_writer_delay }}               # 1-10000 mil
 commit_delay = {{ pg_cfg_srv_commit_delay }}                       # range 0-100000, in microseconds
 commit_siblings = {{ pg_cfg_srv_commit_siblings }}                    # range 1-1000
 
+{% if pg_version | version_compare('9.5', '>=') -%}
+wal_log_hints = {{ pg_cfg_srv_wal_log_hints | default ('false') }}
+{% endif -%}
+
 # - Checkpoints -
 
 max_wal_size = {{ pg_cfg_srv_max_wal_size }}
