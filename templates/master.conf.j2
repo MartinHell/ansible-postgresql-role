@@ -198,6 +198,7 @@ WAL_buffers = {{ pg_cfg_srv_WAL_buffers }}                       # min 32kB, -1 
                                         # (changenge requires restart)
 wal_writer_delay = {{ pg_cfg_srv_wal_writer_delay }}               # 1-10000 milliseconds
 
+max_wal_size = {{ pg_cfg_srv_wal_max_size }}
 commit_delay = {{ pg_cfg_srv_commit_delay }}                       # range 0-100000, in microseconds
 commit_siblings = {{ pg_cfg_srv_commit_siblings }}                    # range 1-1000
 

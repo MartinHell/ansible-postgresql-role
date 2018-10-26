@@ -149,6 +149,7 @@ pg_cfg_srv_WAL_buffers: '-1'                       # min 32kB, -1 sets based on 
                                         # (changenge requires restart)
 pg_cfg_srv_wal_writer_delay: '200ms'               # 1-10000 milliseconds
 
+pg_cfg_srv_wal_max_size: '1GB'
 pg_cfg_srv_commit_delay: '0'                       # range 0-100000, in microseconds
 pg_cfg_srv_commit_siblings: '5'                    # range 1-1000
 
